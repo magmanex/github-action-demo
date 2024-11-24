@@ -43,6 +43,10 @@ jobs:
           NEXT_PUBLIC_APP_NAME: "test"
           NEXT_PUBLIC_FEATURE_FLAG: "test"
 
+      - name: Echo .env File
+        run: |
+          cat .env
+
       # Build Docker image
       - name: Build Docker Image
         run: |
