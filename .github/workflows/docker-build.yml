@@ -6,7 +6,7 @@ on:
     branches:
       - dev
 env:
-  DOCKER_IMAGE_NAME: github-action-demo
+  DOCKER_IMAGE_NAME: magamanex/github-action-demo
   DOCKER_IMAGE_TAG: dev
 
 
