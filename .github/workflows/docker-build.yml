@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - dev
-
-DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
 jobs:
   build:
