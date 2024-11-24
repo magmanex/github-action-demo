@@ -4,7 +4,7 @@ name: Docker Build
 on:
   push:
     branches:
-      - main
+      - dev
 
 DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
