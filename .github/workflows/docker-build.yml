@@ -9,7 +9,6 @@ env:
   DOCKER_IMAGE_NAME: magamanex/github-action-demo
   DOCKER_IMAGE_TAG: dev
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,14 +27,13 @@ jobs:
       # Create .env file dynamically (optional, if not already committed)
       - name: Create .env File
         run: |
-          echo "MY_SECRET_KEY=${{ secrets.DOCKER_USERNAME }}" > .env
+          echo $DOCKER_IMAGE_TAG
 
       # Build Docker image
       - name: Build Docker Image
         run: |
-          docker build -t $DOCKER_IMAGE_TAG .
+          docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG .
 
       - name: Publish Docker Image
         run: |
-          docker push $DOCKER_IMAGE_TAG
-
+          docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
