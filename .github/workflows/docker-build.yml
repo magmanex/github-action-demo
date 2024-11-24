@@ -1,0 +1,29 @@
+# .github/workflows/docker-build.yml
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+
+DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Create .env file dynamically (optional, if not already committed)
+      - name: Create .env File
+        run: |
+          echo "MY_SECRET_KEY=${{ secrets.DOCKER_USERNAME }}" > .env
+
+      # Build Docker image
+      - name: Build Docker Image
+        run: |
+          docker build --build-arg MY_SECRET_KEY=${{ secrets.DOCKER_USERNAME }} -t my-docker-image .
+
