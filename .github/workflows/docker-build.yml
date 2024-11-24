@@ -25,9 +25,23 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Create .env file dynamically (optional, if not already committed)
-      - name: Create .env File
+      - name: Generate .env File
         run: |
-          echo ${{ env.DOCKER_IMAGE_NAME }}:${{ env.DOCKER_IMAGE_TAG }}
+          cat <<EOF > .env
+          NEXT_ENV=$NEXT_ENV
+          NEXT_PUBLIC_BEWALLET_BACKEND_URL=$NEXT_PUBLIC_BEWALLET_BACKEND_URL
+          NEXT_PUBLIC_API_KEY=$NEXT_PUBLIC_API_KEY
+          NEXT_PUBLIC_ANALYTICS_ID=$NEXT_PUBLIC_ANALYTICS_ID 
+          NEXT_PUBLIC_APP_NAME=$NEXT_PUBLIC_APP_NAME
+          NEXT_PUBLIC_FEATURE_FLAG=$NEXT_PUBLIC_FEATURE_FLAG 
+          EOF
+        env:
+          NEXT_ENV: "test"
+          NEXT_PUBLIC_BEWALLET_BACKEND_URL: "test"
+          NEXT_PUBLIC_API_KEY: "test"
+          NEXT_PUBLIC_ANALYTICS_ID: "test"
+          NEXT_PUBLIC_APP_NAME: "test"
+          NEXT_PUBLIC_FEATURE_FLAG: "test"
 
       # Build Docker image
       - name: Build Docker Image
