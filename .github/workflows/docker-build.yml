@@ -6,7 +6,7 @@ on:
     branches:
       - dev
 env:
-  DOCKER_IMAGE_TAG: "github-action:dev"
+  DOCKER_IMAGE_TAG: github-action-demo:dev
 
 
 jobs:
