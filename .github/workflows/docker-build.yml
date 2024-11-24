@@ -32,9 +32,9 @@ jobs:
       # Build Docker image
       - name: Build Docker Image
         run: |
-          docker build --build-arg MY_SECRET_KEY=${{ secrets.DOCKER_USERNAME }} -t ${env.DOCKER_IMAGE_TAG} .
+          docker build -t $DOCKER_IMAGE_TAG .
 
       - name: Publish Docker Image
         run: |
-          docker push ${env.DOCKER_IMAGE_TAG}
+          docker push $DOCKER_IMAGE_TAG
 
